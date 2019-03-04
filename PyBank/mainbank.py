@@ -2,16 +2,17 @@
 
 import os
 import csv
-import numpy
+
 
 BankCsvPath = os.path.join("desktop", "Assignment-3", "PyBank", "budget_data.csv")
 
-months = 0
+Months = 0
 ProfitLoss = 0
-previous = 0 
-change = 0
 ChangeList = []
+MonthlyChange=[]
 AverageChange = 0
+
+
 
 with open(BankCsvPath, newline="") as csvfile:
   csv_reader = csv.reader(csvfile, delimiter=",")
@@ -20,16 +21,31 @@ with open(BankCsvPath, newline="") as csvfile:
   for row in csv_reader:
   
     ProfitLoss += int(row[1])
-    months += 1
+    Months += 1
 
-    change = float(row[1]) - previous
-    previous = float(int(row[1]))
-    ChangeList = ChangeList + [change]
+    ChangeList.append(int(row[1]))
     
+  for i in range(len(ChangeList)-1):
+    MonthlyChange.append(ChangeList[i+1]-ChangeList[i])
   
-  
-  AverageChange = (sum(ChangeList))/(len(ChangeList))
+GreatestIncrease = max(MonthlyChange)
+GreatestDecrease = min(MonthlyChange)
+ 
+AverageChange = (sum(MonthlyChange))/(len(MonthlyChange))
 
 
-print (f"Total revenue over {months} months = {ProfitLoss}")
+
+print ("FINANCIAL ANALYSIS")
+print (f"Total revenue over {Months} months = {ProfitLoss}")
 print (f"Average change = {AverageChange}")
+print(f"Greatest increase in profits = {GreatestIncrease}")
+print(f"Greatest decrease in profits = {GreatestDecrease}")
+
+file = open('output.txt',"w")
+
+file.write ("FINANCIAL ANALYSIS")
+file.write (f"Total revenue over {Months} months = {ProfitLoss}")
+file.write (f"Average change = {AverageChange}")
+file.write (f"Greatest increase in profits = {GreatestIncrease}")
+file.write (f"Greatest decrease in profits = {GreatestDecrease}")
+file.close()
