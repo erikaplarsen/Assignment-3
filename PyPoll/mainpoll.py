@@ -45,7 +45,7 @@ print(f'Total Number of Votes = {voteTotal}')
 
 for candidateName in voteDictionary.keys():
   
-  print(f'Total votes for candidate {candidateName} are: {len(voteDictionary[candidateName])} or ({len(voteDictionary[candidateName])}/{voteTotal})')
-  
-
+  print(f'Total votes for candidate {candidateName} are: {len(voteDictionary[candidateName])} or (({len(voteDictionary[candidateName])}/{voteTotal}))')
+  print (f'Winner is : {str(voteDictionary[0])}')
+#file = open('output.txt',"w")
 
