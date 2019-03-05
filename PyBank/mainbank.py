@@ -41,7 +41,7 @@ print (f"Average change = {AverageChange}")
 print(f"Greatest increase in profits = {GreatestIncrease}")
 print(f"Greatest decrease in profits = {GreatestDecrease}")
 
-file = open('output.txt',"w")
+file = open('bankpy.txt',"w")
 
 file.write ("FINANCIAL ANALYSIS")
 file.write (f"Total revenue over {Months} months = {ProfitLoss}")
